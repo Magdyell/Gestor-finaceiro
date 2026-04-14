@@ -1,0 +1,601 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 20px;
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.botao-tema {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+  margin-bottom: 20px;
+}
+
+
+.botao-tema:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+body.dark .botao-tema {
+  background: #f9fafb;
+  color: #111827;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+.layout-principal {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.conteudo-direita {
+  position: sticky;
+  top: 20px;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+input,
+select {
+  border: 1px solid #ccc;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2d89ef;
+  box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
+}
+
+
+button {
+  background-color: #02008b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.filtro-section,
+.receita-section,
+.form-section,
+.resumo-section,
+.grafico-section,
+.lista-section {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+
+
+.resumo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card-resumo {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-resumo p {
+  font-size: 13px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-resumo span {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 8px;
+  display: block;
+}
+
+.card-resumo:nth-child(1) span {
+  color: #000000;
+}
+
+.card-resumo:nth-child(2) span {
+  color: #ff0000;
+}
+
+.card-resumo:nth-child(3) span {
+  color: #3b82f6;
+}
+
+
+
+#listaGastos,
+#listaCategorias {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#listaCategorias li {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.categoria-topo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.categoria-barra {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.categoria-barra-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  border-radius: 999px;
+}
+
+
+
+#listaGastos li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #0887ffcb;
+  border: 1px solid #0000008a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+
+#listaGastos li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  border-color: #93c5fd;
+}
+
+#listaGastos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  align-items: stretch;
+}
+#listaGastos .gasto-acoes button {
+  font-size: 12px;
+}
+
+.gasto-item {
+    background: linear-gradient(135deg, #a0a0a0, #b9fffc);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+  border: 1px solid #dbeafe;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gasto-item h3 {
+  margin: 0;
+  padding: 16px;
+    background: linear-gradient(135deg, #161515, #464646);
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.gasto-info {
+  padding: 16px;
+  flex: 1;
+}
+
+.gasto-info p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.gasto-acoes {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  margin-top: auto;
+  flex-direction: row-reverse;
+}
+
+.gasto-acoes .btn-excluir,
+.gasto-acoes .btn-pagar,
+.gasto-acoes .btn-pago-ok {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-pago {
+  background: rgb(207, 2, 2);
+}
+
+.gasto-acoes .btn-pagar {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.btn-excluir {
+  background: #b22222;
+}
+
+.btn-pagar {
+  background: #ffd94d;
+  color: white;
+}
+
+.btn-pago-ok {
+  background: #26874e;
+  color: white;
+}
+
+.btn-pago:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+
+#listaGastos li strong {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #606f7d;
+}
+
+#listaGastos li span {
+  font-size: 14px;
+  color: #8E9DAB;
+}
+
+
+
+.gasto-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding: 16px;
+  flex-wrap: nowrap;
+}
+
+#listaGastos button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+#listaGastos button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+
+
+.pago {
+  border-left: 5px solid #000000;
+}
+
+.gasto-item.pago {
+  opacity: 0.8;
+  border-color: #26874e;
+}
+
+.pendente {
+  border-left: 5px solid #ffca1a;
+}
+
+
+
+.grafico-area {
+  width: 100%;
+  height: 220px;
+  margin: 12px 0 20px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.grafico-area canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  .layout-principal {
+    grid-template-columns: 1fr;
+  }
+
+  .conteudo-direita {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .resumo-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-resumo span {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  #listaGastos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  #listaGastos {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+body.dark .gasto-item {
+  background: #1f2937;
+  border: 1px solid #374151;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .container {
+  background: #1f2937;
+}
+
+body.dark .filtro-section,
+body.dark .receita-section,
+body.dark .form-section,
+body.dark .resumo-section,
+body.dark .grafico-section,
+body.dark .lista-section {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark input,
+
+body.dark {
+  background: #111827;
+  color: #f9fafb;
+}
+
+body.dark select {
+  background: #111827;
+  color: white;
+  border: 1px solid #374151;
+}
+
+body.dark #listaGastos li {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark #listaGastos li:hover {
+  border-color: #60a5fa;
+}
+
+body.dark .card-resumo {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark .grafico-area {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark .resumo-section,
+body.dark .grafico-section,
+body.dark .lista-section {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark input,
+body.dark select {
+  background: #111827;
+  color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+body.dark input::placeholder {
+  color: #9ca3af;
+}
+
+body.dark .card-resumo {
+  background: linear-gradient(135deg, #1f2937, #111827);
+  border: 1px solid #374151;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .card-resumo p {
+  color: #9ca3af;
+}
+
+body.dark .card-resumo span {
+  color: #f9fafb;
+}
+
+body.dark #listaGastos li {
+  background: #111827;
+  border: 1px solid #374151;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+body.dark #listaGastos li:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+body.dark #listaGastos li strong {
+  color: #f9fafb;
+}
+
+body.dark #listaGastos li span {
+  color: #d1d5db;
+}
+
+body.dark #listaCategorias li {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #f9fafb;
+}
+
+body.dark #listaCategorias li span:first-child {
+  color: #f9fafb;
+}
+
+body.dark .categoria-barra {
+  background: #374151;
+}
+
+body.dark .grafico-area {
+  background: #111827;
+  border: 1px solid #374151;
+}
+
+body,
+.container,
+.filtro-section,
+.receita-section,
+.form-section,
+.resumo-section,
+.grafico-section,
+.lista-section,
+.card-resumo,
+#listaGastos li,
+#listaCategorias li,
+input,
+select,
+.botao-tema {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
