@@ -1,8 +1,28 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
+}
+
+/* OVERLAY LOGIN */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+  z-index: 999999;
+  margin: 0;
+  padding: 20px;
+}
+
+body.auth-ativo {
+  overflow: hidden;
 }
 
 body {
@@ -13,7 +33,258 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* LOGIN */
+#btnGoogle {
+  margin-top: 10px;
+}
 
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgb(189, 189, 189);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 50px rgba(182, 182, 182, 0.25);
+  backdrop-filter: blur(8px);
+  animation: subirFade 0.35s ease;
+}
+
+.auth-topo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-topo h2 {
+  font-size: 30px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.auth-topo p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.auth-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-auth label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.campo-auth input {
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.2s ease;
+}
+
+.campo-auth input:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.auth-mensagem {
+  min-height: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: #dc2626;
+}
+
+.auth-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-toggle {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.auth-toggle button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 6px;
+  font-size: 14px;
+  padding: 0;
+}
+
+.auth-toggle button:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.btn-auth {
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn-entrar {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-entrar:hover {
+  background: #0044ff;
+}
+
+.btn-cadastrar {
+  background: #10b981;
+  color: white;
+}
+
+.btn-cadastrar:hover {
+  background: #059669;
+}
+
+.btn-google {
+  background: linear-gradient(50deg, #ff0000, #1c18ff, #047a00, #fbff1e);
+  color: #ffffff;
+  border: 1px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-google svg {
+  flex-shrink: 0;
+}
+
+.btn-google:hover {
+  background: linear-gradient(30deg, #fbff1e, #ff0000, #1c18ff, #047a00);
+  animation: gradienteAnimado 8s ease infinite;
+
+  transform: translateY(-1px);
+}
+
+@keyframes subirFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TOPO */
+.topo-app {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.topo-centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.topo-centro h1 {
+  margin-bottom: 6px;
+}
+
+#usuarioLogado {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  text-align: center;
+}
+
+.botao-tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.botao-tema:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.botao-sair {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.botao-sair:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(239, 68, 68, 0.4);
+}
+
+.botao-sair:active {
+  transform: scale(0.97);
+}
+
+/* DARK LOGIN */
+body.dark .auth-card {
+  background: #a0a0a0;
+  color: #f9fafb;
+}
+
+body.dark .auth-card input {
+  background: #929292;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+body.dark .botao-tema {
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* CONTAINER */
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -21,33 +292,6 @@ body {
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.botao-tema {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #111827;
-  color: #ffffff;
-  border: none;
-  border-radius: 999px;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
-  margin-bottom: 20px;
-}
-
-
-.botao-tema:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
-}
-
-body.dark .botao-tema {
-  background: #f9fafb;
-  color: #111827;
 }
 
 h1 {
@@ -120,7 +364,6 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
 }
 
-
 button {
   background-color: #02008b;
   color: white;
@@ -146,8 +389,6 @@ button:hover {
   border-radius: 12px;
   padding: 20px;
 }
-
-
 
 .resumo-cards {
   display: grid;
@@ -192,8 +433,6 @@ button:hover {
   color: #3b82f6;
 }
 
-
-
 #listaGastos,
 #listaCategorias {
   display: flex;
@@ -230,8 +469,6 @@ button:hover {
   border-radius: 999px;
 }
 
-
-
 #listaGastos li {
   display: flex;
   flex-direction: column;
@@ -242,11 +479,9 @@ button:hover {
   padding: 16px;
   margin-bottom: 12px;
   line-height: 1.6;
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-
 
 #listaGastos li:hover {
   transform: translateY(-4px);
@@ -262,12 +497,13 @@ button:hover {
   list-style: none;
   align-items: stretch;
 }
+
 #listaGastos .gasto-acoes button {
   font-size: 12px;
 }
 
 .gasto-item {
-    background: linear-gradient(135deg, #a0a0a0, #b9fffc);
+  background: #8E9DAB;
   border-radius: 14px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
   overflow: hidden;
@@ -280,7 +516,7 @@ button:hover {
 .gasto-item h3 {
   margin: 0;
   padding: 16px;
-    background: linear-gradient(135deg, #161515, #464646);
+  background: linear-gradient(135deg, #161515, #464646);
   color: #ffffff;
   font-size: 20px;
 }
@@ -301,6 +537,7 @@ button:hover {
   padding: 16px;
   margin-top: auto;
   flex-direction: row-reverse;
+  flex-wrap: nowrap;
 }
 
 .gasto-acoes .btn-excluir,
@@ -314,11 +551,11 @@ button:hover {
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .btn-pago {
   background: rgb(207, 2, 2);
 }
@@ -348,7 +585,6 @@ button:hover {
   cursor: default;
 }
 
-
 #listaGastos li strong {
   font-size: 16px;
   margin-bottom: 6px;
@@ -358,16 +594,6 @@ button:hover {
 #listaGastos li span {
   font-size: 14px;
   color: #8E9DAB;
-}
-
-
-
-.gasto-acoes {
-  display: flex;
-  gap: 10px;
-  margin-top: auto;
-  padding: 16px;
-  flex-wrap: nowrap;
 }
 
 #listaGastos button {
@@ -384,8 +610,6 @@ button:hover {
   transform: translateY(-1px);
 }
 
-
-
 .pago {
   border-left: 5px solid #000000;
 }
@@ -398,8 +622,6 @@ button:hover {
 .pendente {
   border-left: 5px solid #ffca1a;
 }
-
-
 
 .grafico-area {
   width: 100%;
@@ -431,6 +653,15 @@ button:hover {
     padding: 16px;
   }
 
+  .topo-app {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .topo-centro h1 {
+    margin-bottom: 4px;
+  }
+
   h1 {
     font-size: 24px;
   }
@@ -456,15 +687,10 @@ button:hover {
   }
 }
 
+/* DARK MODE */
 body.dark {
   background-color: #111827;
   color: #f9fafb;
-}
-
-body.dark .gasto-item {
-  background: #1f2937;
-  border: 1px solid #374151;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
 body.dark .container {
@@ -474,45 +700,6 @@ body.dark .container {
 body.dark .filtro-section,
 body.dark .receita-section,
 body.dark .form-section,
-body.dark .resumo-section,
-body.dark .grafico-section,
-body.dark .lista-section {
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-
-body.dark input,
-
-body.dark {
-  background: #111827;
-  color: #f9fafb;
-}
-
-body.dark select {
-  background: #111827;
-  color: white;
-  border: 1px solid #374151;
-}
-
-body.dark #listaGastos li {
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-
-body.dark #listaGastos li:hover {
-  border-color: #60a5fa;
-}
-
-body.dark .card-resumo {
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-
-body.dark .grafico-area {
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-
 body.dark .resumo-section,
 body.dark .grafico-section,
 body.dark .lista-section {
@@ -531,6 +718,12 @@ body.dark input::placeholder {
   color: #9ca3af;
 }
 
+body.dark select {
+  background: #111827;
+  color: white;
+  border: 1px solid #374151;
+}
+
 body.dark .card-resumo {
   background: linear-gradient(135deg, #1f2937, #111827);
   border: 1px solid #374151;
@@ -543,6 +736,12 @@ body.dark .card-resumo p {
 
 body.dark .card-resumo span {
   color: #f9fafb;
+}
+
+body.dark .gasto-item {
+  background: #1f2937;
+  border: 1px solid #374151;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
 body.dark #listaGastos li {
