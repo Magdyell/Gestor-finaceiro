@@ -17,12 +17,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC_B6zLhTTcsfMJUtC-5qogbTcOhRSt3b0",
-    authDomain: "gestor-financeiro-7ed76.firebaseapp.com",
-    projectId: "gestor-financeiro-7ed76",
-    storageBucket: "gestor-financeiro-7ed76.firebasestorage.app",
-    messagingSenderId: "319727089014",
-    appId: "1:319727089014:web:5add002603ab5ca1d8f657"
+    apiKey: "--------",
+    authDomain: "-----------",
+    projectId: "--------------6",
+    storageBucket: "--------------",
+    messagingSenderId: "---------",
+    appId: "-------------"
 };
 
 const app = initializeApp(firebaseConfig);
