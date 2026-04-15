@@ -72,12 +72,35 @@ const authSubtitulo = document.getElementById("authSubtitulo");
 const campoNome = document.getElementById("campoNome");
 const btnAlternarModo = document.getElementById("btnAlternarModo");
 const textoAlternancia = document.getElementById("textoAlternancia");
+const novaCategoriaInput = document.getElementById("novaCategoria");
+const btnAdicionarCategoria = document.getElementById("btnAdicionarCategoria");
 
 let graficoBarra = null;
 let graficoPizza = null;
 let gastos = [];
 let receitasPorMes = {};
 let modoCadastro = false;
+let categorias = [
+    "Alimentação",
+    "Ração",
+    "Contas Fixas",
+    "Saúde",
+    "Lazer",
+    "Investimentos"
+];
+
+function renderizarOpcoesCategoria() {
+    if (!categoriaInput) return;
+
+    categoriaInput.innerHTML = '<option value="">Selecione a categoria</option>';
+
+    categorias.forEach((categoria) => {
+        const option = document.createElement("option");
+        option.value = categoria;
+        option.textContent = categoria;
+        categoriaInput.appendChild(option);
+    });
+}
 
 function atualizarModoAuth() {
     if (
@@ -219,9 +242,9 @@ async function salvarDadosNoFirebase() {
 
         await setDoc(referenciaDados, {
             gastos,
-            receitasPorMes
+            receitasPorMes,
+            categorias
         });
-
         console.log("Dados salvos no Firestore com sucesso");
     } catch (erro) {
         console.error("Erro ao salvar dados no Firestore:", erro);
@@ -241,16 +264,39 @@ async function carregarDadosDoFirebase() {
 
         if (snapshot.exists()) {
             const dados = snapshot.data();
+
             gastos = Array.isArray(dados.gastos) ? dados.gastos : [];
+
             receitasPorMes =
                 dados.receitasPorMes && typeof dados.receitasPorMes === "object"
                     ? dados.receitasPorMes
                     : {};
+
+            categorias =
+                Array.isArray(dados.categorias) && dados.categorias.length > 0
+                    ? dados.categorias
+                    : [
+                        "Alimentação",
+                        "Ração",
+                        "Contas Fixas",
+                        "Saúde",
+                        "Lazer",
+                        "Investimentos"
+                    ];
         } else {
             gastos = [];
             receitasPorMes = {};
+            categorias = [
+                "Alimentação",
+                "Ração",
+                "Contas Fixas",
+                "Saúde",
+                "Lazer",
+                "Investimentos"
+            ];
         }
 
+        renderizarOpcoesCategoria();
         atualizarCampoReceita();
         renderizarGastos();
         console.log("Dados carregados do Firestore com sucesso");
@@ -392,7 +438,9 @@ function renderizarGraficoCategorias(totaisPorCategoria) {
                         "#ff0000",
                         "#493333",
                         "#006927",
+                        "#4d0a2b",
                         "#ff00ea",
+                        "#000000",
                         "#9a2fff",
                         "#06b6d4",
                         "#eeff00"
@@ -522,6 +570,38 @@ function renderizarGastos() {
     saldo.style.color = saldoFinal >= 0 ? "green" : "red";
 }
 
+if (btnAdicionarCategoria) {
+    btnAdicionarCategoria.addEventListener("click", async () => {
+        const novaCategoria = novaCategoriaInput ? novaCategoriaInput.value.trim() : "";
+
+        if (!novaCategoria) {
+            alert("Digite o nome da nova categoria.");
+            return;
+        }
+
+        const jaExiste = categorias.some(
+            (categoria) => categoria.toLowerCase() === novaCategoria.toLowerCase()
+        );
+
+        if (jaExiste) {
+            alert("Essa categoria já existe.");
+            return;
+        }
+
+        categorias.push(novaCategoria);
+        categorias.sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+        renderizarOpcoesCategoria();
+        categoriaInput.value = novaCategoria;
+
+        if (novaCategoriaInput) {
+            novaCategoriaInput.value = "";
+        }
+
+        await salvarDadosNoFirebase();
+    });
+}
+
 if (btnAlternarModo) {
     btnAlternarModo.addEventListener("click", () => {
         modoCadastro = !modoCadastro;
@@ -605,10 +685,10 @@ if (btnEntrar) {
 
                 const credencial = await createUserWithEmailAndPassword(auth, email, senha);
 
-                await updateProfile(cred.user, {
+                await updateProfile(credencial.user, {
                     displayName: nome
                 });
-                await cred.user.reload();
+                await credencial.user.reload();
 
                 mostrarMensagemAuth("Conta criada com sucesso.", "sucesso");
             } else {
@@ -672,6 +752,7 @@ garantirMesSelecionado();
 atualizarCampoReceita();
 atualizarModoAuth();
 mostrarOverlay();
+renderizarOpcoesCategoria();
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
