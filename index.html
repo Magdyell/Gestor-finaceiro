@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestor de Gastos</title>
-  <link rel="stylesheet" href="Layout.css?v=16">
+  <link rel="stylesheet" href="Layout.css?v=18">
   <link href="font-family.css" rel="stylesheet">
 </head>
 
@@ -109,13 +109,15 @@
               <label for="categoria">Categoria</label>
               <select id="categoria" required>
                 <option value="">Selecione a categoria</option>
-                <option value="Alimentação">Alimentação</option>
-                <option value="Ração">Ração</option>
-                <option value="Contas Fixas">Contas Fixas</option>
-                <option value="Saúde">Saúde</option>
-                <option value="Lazer">Lazer</option>
-                <option value="Investimentos">Investimentos</option>
               </select>
+            </div>
+
+            <div class="campo">
+              <label for="novaCategoria">Nova categoria</label>
+              <div class="linha-categoria">
+                <input type="text" id="novaCategoria" placeholder="Digite uma nova categoria">
+                <button type="button" id="btnAdicionarCategoria">Adicionar</button>
+              </div>
             </div>
 
             <div class="campo">
@@ -177,7 +179,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-  <script type="module" src="funcionalidade.js?v=16"></script>
+  <script type="module" src="funcionalidade.js?v=18"></script>
 </body>
 
 </html>
