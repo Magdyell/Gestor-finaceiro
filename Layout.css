@@ -462,6 +462,14 @@ button:hover {
   border-radius: 999px;
   overflow: hidden;
 }
+.linha-categoria {
+  display: flex;
+  gap: 10px;
+}
+
+.linha-categoria input {
+  flex: 1;
+}
 
 .categoria-barra-fill {
   height: 100%;
