@@ -462,6 +462,7 @@ button:hover {
   border-radius: 999px;
   overflow: hidden;
 }
+
 .linha-categoria {
   display: flex;
   gap: 10px;
@@ -470,6 +471,7 @@ button:hover {
 .linha-categoria input {
   flex: 1;
 }
+
 
 .categoria-barra-fill {
   height: 100%;
@@ -694,8 +696,73 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 400px) {
 
-/* DARK MODE */
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 14px;
+  }
+
+
+  .topo-app {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .topo-centro {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+
+  .resumo-cards {
+    grid-template-columns: 1fr;
+  }
+
+
+  #listaGastos {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+
+  .gasto-acoes {
+    flex-direction: column;
+  }
+
+  .gasto-acoes button {
+    width: 100%;
+  }
+
+ 
+  .linha-categoria {
+    flex-direction: column;
+  }
+
+  .categoria-topo {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+
+  input,
+  select,
+  button {
+    font-size: 16px;
+  }
+}
+
 body.dark {
   background-color: #111827;
   color: #f9fafb;
@@ -789,6 +856,7 @@ body.dark .grafico-area {
   background: #111827;
   border: 1px solid #374151;
 }
+
 
 body,
 .container,
